@@ -73,10 +73,19 @@ export default function photoReducer(state = intitState, action) {
 		}
 
 		case `${FETCH_USER}${_SUCCESS}`: {
+			const data = action.payload;
+
+			const selected = {}
+
+			data.entries.forEach(entry => {
+				selected[entry.id] = entry
+			})
+
 			return {
 				...state,
 				busy: false,
-				// data: action.payload,
+				data: action.payload,
+				selected,
 			};
 		}
 

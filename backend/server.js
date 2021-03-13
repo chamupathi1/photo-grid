@@ -22,7 +22,7 @@ connection.once( 'open', () => {
 } );
 
 
-app.use( '/api/v1/',userRoutes );
+app.use( '/api/v1/', userRoutes );
 
 // error handler
 app.use( ( error, req, res, next ) => { // eslint-disable-line no-unused-vars

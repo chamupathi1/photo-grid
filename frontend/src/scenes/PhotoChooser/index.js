@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../common/Layout';
 import PhotoCard from '../../common/PhotoCard';
 import { maxPhotos } from '../../constants';
+import { saveUser } from '../Home/actions';
 import { fetchAllPhotos } from './actions';
 
 const classes = {
@@ -19,14 +20,14 @@ const classes = {
 		margin: '8px',
 		top: '48px',
 	},
-        spacer : {width:'100%', height:'120px'}
+	spacer: { width: '100%', height: '120px' },
 };
 
 const Selct = () => {
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.photo.data);
 	const busy = useSelector((state) => state.photo.busy);
-        const unsaved =  useSelector((state) => state.photo.unsaved);
+	const unsaved = useSelector((state) => state.photo.unsaved);
 	const selectedImages = useSelector((state) => state.photo.selected);
 
 	const { entries } = data;
@@ -34,6 +35,13 @@ const Selct = () => {
 	useEffect(() => {
 		dispatch(fetchAllPhotos());
 	}, [dispatch]);
+
+	const handleSave = () => {
+		dispatch(saveUser({
+			id: data.id,
+			entries : Object.keys(selectedImages).map((key) => selectedImages[key])
+		}));
+	};
 
 	return (
 		<Layout>
@@ -52,7 +60,14 @@ const Selct = () => {
 						</Nav.Item>
 					</Nav>
 					<Form inline>
-						{ unsaved && <Button variant="outline-success">Save</Button> }
+						{unsaved && (
+							<Button
+								variant="outline-success"
+								onClick={handleSave}
+							>
+								Save
+							</Button>
+						)}
 					</Form>
 				</Navbar>
 				<Row>
@@ -64,7 +79,7 @@ const Selct = () => {
 					{busy && 'Loading...'}
 					{entries &&
 						entries
-							.slice(1, 15)
+							// .slice(1, 15)
 							.map((photo) => (
 								<PhotoCard
 									key={photo.id}

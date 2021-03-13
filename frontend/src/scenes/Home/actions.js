@@ -28,10 +28,15 @@ export const fetchUser = () => ({
 	},
 });
 
-export const saveUser = () => ({
+export const saveUser = (data) => ({
 	[RSAA]: {
 		endpoint: `${BASE_URL}/`,
 		method: 'POST',
 		types: [SAVE_USER, `${SAVE_USER}${_SUCCESS}`, `${SAVE_USER}${_FAILED}`],
+		headers : {
+			Accept : 'application/json',
+			'Content-Type' : 'application/json',
+		},
+		body : JSON.stringify( data ),
 	},
 });
