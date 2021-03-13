@@ -78,9 +78,7 @@ const Selct = () => {
 				<Row>
 					{busy && 'Loading...'}
 					{entries &&
-						entries
-							// .slice(1, 15)
-							.map((photo) => (
+						entries.map((photo) => (
 								<PhotoCard
 									key={photo.id}
 									photo={photo}
