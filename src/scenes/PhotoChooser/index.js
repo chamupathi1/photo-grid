@@ -6,7 +6,6 @@ import {
 	Row,
 	Nav,
 	Form,
-	FormControl,
 	Button,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +17,6 @@ import { fetchAllPhotos } from './actions';
 const classes = {
 	nav: {
 		margin: '8px',
-		top: '8px',
 		top: '48px',
 	},
         spacer : {width:'100%', height:'120px'}

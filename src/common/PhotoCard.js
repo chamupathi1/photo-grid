@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Col, Media, Image } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { imgHeight } from '../constants';
+import { TOGGLE_PHOTO } from '../redux/actionTypes';
 
 const classes = {
 	image: {
@@ -17,15 +19,25 @@ const classes = {
 	},
 };
 const PhotoCard = ({ photo, selected }) => {
+	const dispatch = useDispatch()
+
 	const [loaded, setLoaded] = useState(false);
 
         const photoStyles = selected ? { ...classes.image, ...classes.selected,} : classes.image;
+
+	const handleClick = () => {
+		dispatch({
+			type: TOGGLE_PHOTO,
+			payload : photo
+		})
+	}
 
 	return (
 		<Col xs={12} md={4} lg={3} key={photo.id} style={{position:'relative'}}>
 			<Media>
 				{loaded ? null : <div style={classes.loading} />}
 				<Image
+					onClick={handleClick}
 					style={loaded ? photoStyles : { display: 'none' }}
 					width={'100%'}
 					height={`${imgHeight}px`}
