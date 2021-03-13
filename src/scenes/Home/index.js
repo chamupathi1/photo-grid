@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
 	Col,
 	Container,
@@ -8,7 +8,7 @@ import {
 	Form,
 	Button,
 } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Layout from '../../common/Layout';
 import PhotoCard from '../../common/PhotoCard';
 import { maxPhotos } from '../../constants';
@@ -30,6 +30,7 @@ const Selct = () => {
 	return (
 		<Layout>
 			<Container>
+                                {/* TODO move this nav bar as a seperate component */}
 				<Navbar
 					fixed="top"
 					bg="light"
