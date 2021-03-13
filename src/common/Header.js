@@ -50,7 +50,7 @@ const getLink = (location, nav) => {
         const style = selected ? {...classes.nav, ...classes.selected} : classes.nav
 
 	return (
-		<Nav.Item>
+		<Nav.Item key={nav.route}>
 			<Link to={nav.route} style={style}>
 				{nav.text}
 			</Link>
