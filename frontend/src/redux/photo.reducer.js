@@ -1,6 +1,7 @@
 import { maxPhotos } from '../constants';
 import {
 	FETCH_ALL_PHOTOS,
+	FETCH_USER,
 	TOGGLE_PHOTO,
 	_FAILED,
 	_SUCCESS,
@@ -60,6 +61,29 @@ export default function photoReducer(state = intitState, action) {
 				...state,
 				selected: { ...selected },
 				unsaved : true
+			};
+		}
+
+		case FETCH_USER: {
+			return {
+				...state,
+				busy: true,
+				data: {},
+			};
+		}
+
+		case `${FETCH_USER}${_SUCCESS}`: {
+			return {
+				...state,
+				busy: false,
+				// data: action.payload,
+			};
+		}
+
+		case `${FETCH_USER}${_FAILED}`: {
+			return {
+				...state,
+				busy: false,
 			};
 		}
 

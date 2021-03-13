@@ -38,10 +38,11 @@ module.exports.getUser = async ( req, res, next ) => {
 			if ( err ) {
 				next( boom.notFound() );
 			}
-			if ( doc === null ) {
+			else if ( doc === null ) {
 				next( boom.notFound() );
 			}
-			res.status( 200 ).json( doc );
+			else
+			res.status( 200 ).json( doc || {} );
 		} );
 	} catch ( error ) {
 		next( boom.notFound( 'not found', {} ) );

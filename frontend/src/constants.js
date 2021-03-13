@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://35.238.155.129:4001';
+export const BASE_URL = 'http://localhost:4060/api/v1';
 
 export const imgHeight = 300;
 

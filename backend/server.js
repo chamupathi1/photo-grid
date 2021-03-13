@@ -22,12 +22,18 @@ connection.once( 'open', () => {
 } );
 
 
+app.use( '/api/v1/',userRoutes );
+
 // error handler
 app.use( ( error, req, res, next ) => { // eslint-disable-line no-unused-vars
 	if ( error.isServer ) {
 		// log server errors 5xx status codes
 		logger.error( error );
 		return res.status( 500 ).json( 'internal server error' );
+	}
+
+	if ( error.output && error.output.statusCode ) {
+		return res.status( error.output.statusCode ).json( error.output.payload );
 	}
 	
 	console.log( error );
@@ -36,7 +42,6 @@ app.use( ( error, req, res, next ) => { // eslint-disable-line no-unused-vars
 } );
 
 
-app.use( '/api/v1/',userRoutes );
 
 app.listen( secrets.PORT, () => {
 	console.log( `Server is running on Port: ${secrets.PORT}` );

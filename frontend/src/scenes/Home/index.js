@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
 	Col,
 	Container,
@@ -8,36 +8,46 @@ import {
 	Form,
 	Button,
 } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../common/Layout';
 import PhotoCard from '../../common/PhotoCard';
 import { maxPhotos } from '../../constants';
+import { fetchUser } from './actions';
 
 const classes = {
 	nav: {
 		margin: '8px',
 		top: '48px',
 	},
-        spacer : {width:'100%', height:'120px'}
+	spacer: { width: '100%', height: '120px' },
 };
 
 const Selct = () => {
+	const dispatch = useDispatch();
 
 	const selectedImages = useSelector((state) => state.photo.selected);
 	const busy = useSelector((state) => state.photo.busy);
-        const unsaved =  useSelector((state) => state.photo.unsaved);
+	const unsaved = useSelector((state) => state.photo.unsaved);
+
+	useEffect(() => {
+		if (!Object.keys(selectedImages).length) {
+			dispatch(fetchUser());
+		}
+	}, [dispatch]);
 
 	return (
 		<Layout>
 			<Container>
-                                {/* TODO move this nav bar as a seperate component */}
+				{/* TODO move this nav bar as a seperate component */}
 				<Navbar
 					fixed="top"
 					bg="light"
 					variant="light"
 					style={classes.nav}
 				>
-					<Navbar.Brand>{unsaved ? 'You have unsaved changes':'Your photos'}</Navbar.Brand>
+					<Navbar.Brand>
+						{unsaved ? 'You have unsaved changes' : 'Your photos'}
+					</Navbar.Brand>
 					<Nav className="mr-auto">
 						<Nav.Item>
 							{Object.keys(selectedImages).length} / {maxPhotos}{' '}
@@ -45,7 +55,9 @@ const Selct = () => {
 						</Nav.Item>
 					</Nav>
 					<Form inline>
-						{ unsaved && <Button variant="outline-success">Save</Button> }
+						{unsaved && (
+							<Button variant="outline-success">Save</Button>
+						)}
 					</Form>
 				</Navbar>
 				<Row>
@@ -55,15 +67,14 @@ const Selct = () => {
 				</Row>
 				<Row>
 					{busy && 'Loading...'}
-					{Object.keys(selectedImages)
-							.map((key) => (
-								<PhotoCard
-									key={key}
-									photo={selectedImages[key]}
-									selected={false}
-                                                                        disbleSelect
-								/>
-							))}
+					{Object.keys(selectedImages).map((key) => (
+						<PhotoCard
+							key={key}
+							photo={selectedImages[key]}
+							selected={false}
+							disbleSelect
+						/>
+					))}
 				</Row>
 			</Container>
 		</Layout>
