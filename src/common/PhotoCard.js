@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Col, Media } from 'react-bootstrap';
+import { Col, Media, Image } from 'react-bootstrap';
+import { imgHeight } from '../constants';
 
 const classes = {
 	image: {
@@ -24,13 +25,14 @@ const PhotoCard = ({ photo, selected }) => {
 		<Col xs={12} md={4} lg={3} key={photo.id} style={{position:'relative'}}>
 			<Media>
 				{loaded ? null : <div style={classes.loading} />}
-				<img
+				<Image
 					style={loaded ? photoStyles : { display: 'none' }}
 					width={'100%'}
-					height={'300px'}
+					height={`${imgHeight}px`}
 					src={photo.picture}
 					alt="placeholder"
 					onLoad={() => setLoaded(true)}
+                                        rounded
 				/>
 			</Media>
 		</Col>

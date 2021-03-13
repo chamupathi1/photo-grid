@@ -7,7 +7,7 @@ const intitState = {
                 204900002 : true,
                 204900003 : true,
                 204900008 : true,
-                204900003 : true,
+                204900010 : true,
                 204900009 : true,
         }
 };

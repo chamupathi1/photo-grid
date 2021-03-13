@@ -21,7 +21,7 @@ const Header = () => {
 
 	return (
 		<div>
-			<Navbar bg="dark" variant="dark">
+			<Navbar fixed="top" bg="dark" variant="dark">
 				<Navbar.Brand >Photo Grid</Navbar.Brand>
 				<Nav className="mr-auto">
 					{navs.map((nav) => getLink(location, nav))}
