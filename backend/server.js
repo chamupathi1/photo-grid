@@ -6,6 +6,8 @@ const cors = require( 'cors' );
 const mongoose = require( 'mongoose' );
 const secrets  = require('./secrets');
 
+const userRoutes = require( './routes/userRoutes' );
+
 app.use( cors() );
 
 app.use( bodyParser.json() );
@@ -32,6 +34,9 @@ app.use( ( error, req, res, next ) => { // eslint-disable-line no-unused-vars
 
 	return res.status( 500 ).json( 'internel server error' );
 } );
+
+
+app.use( '/api/v1/',userRoutes );
 
 app.listen( secrets.PORT, () => {
 	console.log( `Server is running on Port: ${secrets.PORT}` );
