@@ -9,6 +9,8 @@ const Selct = () => {
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.photo.data);
 	const busy = useSelector((state) => state.photo.busy);
+        const selectedImages = useSelector((state) => state.photo.selected);
+
 	const { entries } = data;
 
 	useEffect(() => {
@@ -23,7 +25,7 @@ const Selct = () => {
 					{entries &&
 						entries
                                                 .slice(1, 15)
-                                                .map((photo) => <PhotoCard key={photo.id} photo={photo} selected={photo.id == '204900003'}/>)}
+                                                .map((photo) => <PhotoCard key={photo.id} photo={photo} selected={selectedImages[photo.id]}/>)}
 				</Row>
 			</Container>
 		</Layout>

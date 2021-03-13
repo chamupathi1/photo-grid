@@ -22,7 +22,6 @@ const PhotoCard = ({ photo, selected }) => {
 
 	return (
 		<Col xs={12} md={4} lg={3} key={photo.id} style={{position:'relative'}}>
-			{/* {photo.id} */}
 			<Media>
 				{loaded ? null : <div style={classes.loading} />}
 				<img

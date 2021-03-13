@@ -3,6 +3,13 @@ import { FETCH_ALL_PHOTOS, _FAILED, _SUCCESS } from "./actionTypes";
 const intitState = {
         busy : false,
         data : {},
+        selected : {
+                204900002 : true,
+                204900003 : true,
+                204900008 : true,
+                204900003 : true,
+                204900009 : true,
+        }
 };
 
 export default function photoReducer( state = intitState, action ) {
