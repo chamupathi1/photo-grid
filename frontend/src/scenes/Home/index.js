@@ -14,8 +14,6 @@ const classes = {
 };
 
 const Index = () => {
-	const dispatch = useDispatch();
-
 	const selectedImages = useSelector((state) => state.photo.selected);
 	const busy = useSelector((state) => state.photo.busy);
 

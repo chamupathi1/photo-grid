@@ -1,7 +1,7 @@
 const User = require( '../models/user.model' );
 const boom = require( 'boom' );
 
-/* create new company*/
+/* upsert new user*/
 module.exports.upsertUser = async ( req, res, next ) => {
 	const body = req.body;
 	const { id }  = body
@@ -18,25 +18,24 @@ module.exports.upsertUser = async ( req, res, next ) => {
 			.then( ( saved ) => {
 				res.status( 201 ).json( saved );
 			} )
-			.catch( ( ) => next( boom.conflict( 'server conflict 1', {} ) ) );
+			.catch( ( ) => next( boom.conflict( 'server conflict', {} ) ) );
 		} else {
 			user.save()
 				.then( ( saved ) => {
 					res.status( 201 ).json( saved );
 				} )
-				.catch( ( ) => next( boom.conflict( 'server conflict 2', {} ) ) );
+				.catch( ( ) => next( boom.conflict( 'server conflict', {} ) ) );
 
 		}
 	} catch ( error ) {
 		console.log(error)
-		next( boom.conflict( 'server conflict 3', {} ) );
+		next( boom.conflict( 'server conflict', {} ) );
 	}
 };
 
-/* get company */
+/* get user */
 module.exports.getUser = async ( req, res, next ) => {
 	try {
-		// User.collection.drop()
 		User.findOne( { }, ( err, doc ) => {
 			if ( err ) {
 				next( boom.notFound() );
