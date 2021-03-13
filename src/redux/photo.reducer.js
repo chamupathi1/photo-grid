@@ -1,7 +1,8 @@
 import { FETCH_ALL_PHOTOS, _FAILED, _SUCCESS } from "./actionTypes";
 
 const intitState = {
-        busy : false
+        busy : false,
+        data : {},
 };
 
 export default function photoReducer( state = intitState, action ) {
@@ -12,7 +13,7 @@ export default function photoReducer( state = intitState, action ) {
                         return {
                                 ...state,
                                 busy : true,
-                                photos : []
+                                data : {}
                         }
                 }
 
@@ -20,7 +21,7 @@ export default function photoReducer( state = intitState, action ) {
                         return {
                                 ...state,
                                 busy : false,
-                                photos : action.payload
+                                data : action.payload
                         }
                 }
 
