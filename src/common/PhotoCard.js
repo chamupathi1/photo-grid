@@ -18,7 +18,7 @@ const classes = {
 		width: '100%',
 	},
 };
-const PhotoCard = ({ photo, selected }) => {
+const PhotoCard = ({ disbleSelect, photo, selected }) => {
 	const dispatch = useDispatch()
 
 	const [loaded, setLoaded] = useState(false);
@@ -26,6 +26,8 @@ const PhotoCard = ({ photo, selected }) => {
         const photoStyles = selected ? { ...classes.image, ...classes.selected,} : classes.image;
 
 	const handleClick = () => {
+		if( disbleSelect ) return;
+		
 		dispatch({
 			type: TOGGLE_PHOTO,
 			payload : photo

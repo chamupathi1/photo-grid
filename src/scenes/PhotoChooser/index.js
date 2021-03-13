@@ -26,6 +26,7 @@ const Selct = () => {
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.photo.data);
 	const busy = useSelector((state) => state.photo.busy);
+        const unsaved =  useSelector((state) => state.photo.unsaved);
 	const selectedImages = useSelector((state) => state.photo.selected);
 
 	const { entries } = data;
@@ -51,7 +52,7 @@ const Selct = () => {
 						</Nav.Item>
 					</Nav>
 					<Form inline>
-						<Button variant="outline-success">Save</Button>
+						{ unsaved && <Button variant="outline-success">Save</Button> }
 					</Form>
 				</Navbar>
 				<Row>

@@ -10,6 +10,7 @@ const intitState = {
 	busy: false,
 	data: {},
 	selected: {},
+	unsaved : false
 };
 
 export default function photoReducer(state = intitState, action) {
@@ -58,6 +59,7 @@ export default function photoReducer(state = intitState, action) {
 			return {
 				...state,
 				selected: { ...selected },
+				unsaved : true
 			};
 		}
 
