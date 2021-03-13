@@ -76,7 +76,6 @@ export default function photoReducer(state = intitState, action) {
 			return {
 				...state,
 				busy: true,
-				data: {},
 			};
 		}
 
@@ -92,7 +91,6 @@ export default function photoReducer(state = intitState, action) {
 			return {
 				...state,
 				busy: false,
-				data: action.payload,
 				selected,
 			};
 		}

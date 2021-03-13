@@ -11,7 +11,7 @@ import { routes } from '../../routes';
 
 export const fetchUser = () => ({
 	[RSAA]: {
-		endpoint: `${BASE_URL}/`,
+		endpoint: `${BASE_URL}/user`,
 		method: 'GET',
 		types: [
 			FETCH_USER,
@@ -30,7 +30,7 @@ export const fetchUser = () => ({
 
 export const saveUser = (data) => ({
 	[RSAA]: {
-		endpoint: `${BASE_URL}/`,
+		endpoint: `${BASE_URL}/user`,
 		method: 'POST',
 		types: [SAVE_USER, `${SAVE_USER}${_SUCCESS}`, `${SAVE_USER}${_FAILED}`],
 		headers : {

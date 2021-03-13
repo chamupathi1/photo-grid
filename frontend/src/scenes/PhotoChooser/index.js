@@ -11,6 +11,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../common/Layout';
 import PhotoCard from '../../common/PhotoCard';
+import UserHeader from '../../common/UserHeader';
 import { maxPhotos } from '../../constants';
 import { saveUser } from '../Home/actions';
 import { fetchAllPhotos } from './actions';
@@ -46,30 +47,7 @@ const Selct = () => {
 	return (
 		<Layout>
 			<Container>
-				<Navbar
-					fixed="top"
-					bg="light"
-					variant="light"
-					style={classes.nav}
-				>
-					<Navbar.Brand>Select your photos</Navbar.Brand>
-					<Nav className="mr-auto">
-						<Nav.Item>
-							{Object.keys(selectedImages).length} / {maxPhotos}{' '}
-							selected{' '}
-						</Nav.Item>
-					</Nav>
-					<Form inline>
-						{unsaved && (
-							<Button
-								variant="outline-success"
-								onClick={handleSave}
-							>
-								Save
-							</Button>
-						)}
-					</Form>
-				</Navbar>
+				<UserHeader />
 				<Row>
 					<Col xs={12}>
 						<div style={classes.spacer}></div>
