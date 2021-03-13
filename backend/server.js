@@ -4,13 +4,13 @@ const app = express();
 const bodyParser = require( 'body-parser' );
 const cors = require( 'cors' );
 const mongoose = require( 'mongoose' );
+const secrets  = require('./secrets');
 
 app.use( cors() );
 
 app.use( bodyParser.json() );
 
-
-const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@cluster0.zlwqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${secrets.MONGO_USER}:${secrets.MONGO_PW}@cluster0.zlwqo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 mongoose.connect( uri, { useNewUrlParser : true } );
 const { connection } = mongoose;
@@ -33,6 +33,6 @@ app.use( ( error, req, res, next ) => { // eslint-disable-line no-unused-vars
 	return res.status( 500 ).json( 'internel server error' );
 } );
 
-app.listen( config.serverPort, () => {
-	console.log( `Server is running on Port: ${config.serverPort}` );
+app.listen( secrets.PORT, () => {
+	console.log( `Server is running on Port: ${secrets.PORT}` );
 } );
