@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../common/Layout';
 import PhotoCard from '../../common/PhotoCard';
 import UserHeader from '../../common/UserHeader';
-import { saveUser } from '../Home/actions';
 import { fetchAllPhotos } from './actions';
 
 const classes = {
