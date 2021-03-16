@@ -4,7 +4,7 @@ import {
 	Container,
 	Row,
 } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Layout from '../../common/Layout';
 import PhotoCard from '../../common/PhotoCard';
 import UserHeader from '../../common/UserHeader';

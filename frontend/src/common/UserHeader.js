@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 
 import {
-	Col,
-	Container,
 	Navbar,
-	Row,
 	Nav,
 	Form,
 	Button,
@@ -32,7 +29,7 @@ const UserHeader = () => {
 		if (!Object.keys(selectedImages).length) {
 			dispatch(fetchUser());
 		}
-	}, [dispatch]);
+	}, [dispatch, selectedImages]);
 
 	const handleSave = () => {
 		dispatch(
