@@ -24,7 +24,7 @@ const classes = {
 	spacer: { width: '100%', height: '120px' },
 };
 
-const Selct = () => {
+const PhotoChooser = () => {
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.photo.data);
 	const busy = useSelector((state) => state.photo.busy);
@@ -69,4 +69,4 @@ const Selct = () => {
 	);
 };
 
-export default Selct;
+export default PhotoChooser;
